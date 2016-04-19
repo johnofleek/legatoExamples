@@ -1,0 +1,38 @@
+version: 1.0
+sandboxed: false
+
+executables:
+{
+    mqttClient  = ( mqttClientComp )
+}
+
+processes:
+{
+    envVars:
+    {
+        LE_LOG_LEVEL = DEBUG
+    }
+
+    run:
+    {
+        (mqttClient)
+    }
+}
+
+start: auto
+
+bindings:
+{
+    mqttClient.mqttClientComp.le_data -> dataConnectionService.le_data
+    mqttClient.mqttClientComp.le_info -> modemService.le_info
+  
+}
+
+provides:
+{
+    api:
+    {
+        mqttClient.mqttClientComp.mqtt
+    }
+}
+

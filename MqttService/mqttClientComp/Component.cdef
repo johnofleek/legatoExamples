@@ -1,0 +1,32 @@
+sources:
+{
+    mqttMain.c
+    src/mqttClient.c
+    src/mqtt/mqttConnectClient.c
+    src/mqtt/mqttConnectServer.c
+    src/mqtt/mqttUnsubscribeClient.c
+    src/mqtt/mqttUnsubscribeServer.c
+    src/mqtt/mqttSerializePublish.c
+    src/mqtt/mqttSubscribeClient.c
+    src/mqtt/mqttDeserializePublish.c
+    src/mqtt/mqttSubscribeServer.c
+    src/mqtt/mqttPacket.c
+    src/json/swir_json.c
+}
+
+requires:
+{
+    api:
+    {
+        le_data.api
+        le_info.api
+    }
+}
+
+provides:
+{
+    api:
+    {
+        mqtt.api
+    }
+}
