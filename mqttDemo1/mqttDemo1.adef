@@ -27,15 +27,15 @@ bindings:
     // code to code
     // clientExe.clientComponent.clientInterface -> serverExe.ServerComponent.ServerInterface
     
-    
     // this code to another application
     // clientExe.clientComponent.clientInterface -> serverExe.ServerInterface
-    // unfortunately the mqtt legato server is actually called mqttClient because it is a client to cloud based the mqtt server 
+    
     mqttdemo1.mqttDemo1Component.mqtt -> mqttService.mqtt
     
     // we want to use the radio WAN app so that we can start an IP session over WAN (3G)
     mqttdemo1.mqttDemo1Component.le_data -> dataConnectionService.le_data
     
+    // we want to use le_mdc because we need to know if the WAN interface is up
     mqttdemo1.mqttDemo1Component.le_mdc -> modemService.le_mdc
 }
 
@@ -43,9 +43,8 @@ requires:
 {
     device:
     {
-        // I get read and write access to the I2C port.
+        // I read and write access to the I2C port.
         [rw]    /dev/i2c-0   /dev/i2c-0
     }
 }
 
-// faultAction: stopApp
