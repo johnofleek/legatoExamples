@@ -9,17 +9,19 @@ requires:
 {
     api:
     {
+        // This statement is for the auto generation of interface with external app 
+        // functions and cbh descriptions
+	// when the code builds -  the supporting .h and .c files will be created by the build tools 
+	// the generated code will be in a subfolder of this project
+        
         mqtt.api [manual-start]  // I'll start this when I'm ready by calling mqtt_ConnectService().
-                	// This statement is for the auto generation of interface with external app 
-                    //functions and cbh descriptions
-					// when the code builds -  the supporting .h and .c files will be created by the build tools 
-					// the generated code will be in a subfolder of this project
-					
-		le_data.api [manual-start]
-		          // we want an api so that we can start the WAN IP interface
-		          // - look for rmnet using shell command ifconfig
-		modemServices/le_mdc.api 
-		          // so we can check on IP address and connection state
+        
+	// we want an api so that we can start the WAN IP interface
+	// - look for rmnet using shell command ifconfig
+	le_data.api [manual-start]
+	
+	// so we can check on IP address and connection state
+	modemServices/le_mdc.api 
     }
 }
 
