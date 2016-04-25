@@ -8,3 +8,6 @@
 
 * Is a client to mqttService
 * Is set to manual start
+ 
+## make for target wp85
+make wp85
