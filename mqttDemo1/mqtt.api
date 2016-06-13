@@ -57,7 +57,7 @@ FUNCTION SendJson
  * get mqtt connection state - useful for manual query
  */
 //--------------------------------------------------------------------------------------------------
-FUNCTION uint8_t GetConnectionState
+FUNCTION uint8 GetConnectionState
 (
 );
 
