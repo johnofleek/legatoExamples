@@ -40,17 +40,6 @@ void mqttSessionState_cbh
 
 
 
-int32_t mqtt_sendFloat(char * key, float val)
-{
-	char value[128];
-	int32_t errCode;
-
-	sprintf(value, "%f", val);
-	mqtt_Send(key, value, &errCode);
-
-	return (errCode);
-}
-
 static int count = 12;
 // This callack handler is called at the preset timer rate until the timer's stopped
  void timerPeriodicEvent_cbh(le_timer_Ref_t timerRef)
@@ -63,12 +52,12 @@ static int count = 12;
 
 
 	 // read the sensor values
-	 temperature =  LSM6DS3__readTempC();
+	 temperature =  34.4;
 	 LE_INFO("temperature=%f", temperature  );
 
-	 AX = LSM6DS3__readFloatAccelX();
-	 AY = LSM6DS3__readFloatAccelY();
-	 AZ = LSM6DS3__readFloatAccelZ();
+	 AX = 12.3;
+	 AY = 13.2;
+	 AZ =0.9;
 
 	 LE_INFO("AX=%f AY=%f AZ=%f", AX , AY , AZ );
 
@@ -195,10 +184,7 @@ COMPONENT_INIT
 
 
 
-    // setup the accelerometer and i2c bus
-    LSM6DS3_i2cInit(LSM6DS3_DEFAULT_I2C_ADDRESS);
-	LSM6DS3__init();
-	LSM6DS3__begin();
+
 
     timerPeriodicEvent_init(10);
 }

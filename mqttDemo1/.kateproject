@@ -1,0 +1,18 @@
+{
+  "name": "modbusTest"
+, "files": [ { "directory": ".", "filters": ["*.cpp","*.c","*.adef","*.cdef","*.api","*.h","MakeFile"], "recursive": 1 }]
+,
+ "build": 
+    {
+        "directory": ".",
+        "targets":[
+             {"name":"all", "build_cmd":"make wp85"}
+            ,{"name":"clean", "build_cmd":"make clean"}
+            ,{"name":"start", "build_cmd":"make start"}
+            ,{"name":"install", "build_cmd":"make install"}
+            ,{"name":"stop", "build_cmd":"make stop"}
+        ] 
+        ,"default_target": "all"
+        ,"clean_target": "clean"
+    }
+}

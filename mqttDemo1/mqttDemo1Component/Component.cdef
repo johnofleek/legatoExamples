@@ -25,26 +25,4 @@ requires:
     }
 }
 
-// this is just for lwm2m / airvantage api
-// it not used here as currently 16-01 lwm2m2 doesn't support data push
-assets:
-{
-    Sensor = 
-    {
-        variables:
-        {
-            float  AX
-            float  AY
-            float  AZ
-            float  Temperature
-        }
 
-        settings:
-        {
-        }
-
-        commands:
-        {
-        }
-    }
-}

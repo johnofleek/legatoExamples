@@ -1,0 +1,50 @@
+
+version: 1.0.0
+maxFileSystemBytes: 512K
+sandboxed: true
+start: manual               // so that we can control when this app starts 
+
+executables:
+{
+	mqttdemo1 = ( mqttDemo1Component )
+}
+processes:
+{
+	envVars:
+	{
+		LE_LOG_LEVEL = DEBUG
+	}
+	run:
+	{
+		( mqttdemo1 )
+	}
+	maxCoreDumpFileBytes: 512K
+	maxFileBytes: 512K
+	faultAction: stopApp 
+}
+bindings:
+{
+    // code to code
+    // clientExe.clientComponent.clientInterface -> serverExe.ServerComponent.ServerInterface
+    
+    // this code to another application
+    // clientExe.clientComponent.clientInterface -> serverExe.ServerInterface
+    
+    mqttdemo1.mqttDemo1Component.mqtt -> mqttClient.mqttClientComp.mqtt
+    
+    // we want to use the radio WAN app so that we can start an IP session over WAN (3G)
+    mqttdemo1.mqttDemo1Component.le_data -> dataConnectionService.le_data
+    
+    // we want to use le_mdc because we need to know if the WAN interface is up
+    mqttdemo1.mqttDemo1Component.le_mdc -> modemService.le_mdc
+}
+
+requires:
+{
+    device:
+    {
+        // I read and write access to the I2C port.
+        [rw]    /dev/i2c-0   /dev/i2c-0
+    }
+}
+
